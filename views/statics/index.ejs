@@ -1,2 +1,11 @@
 <h1>Groundhoppers Lists</h1>
 <p>Tell others about all the grounds you've visited over the years!</p>
+
+
+<% users.forEach((user) => { %>
+  <p>
+    <strong>Username:</strong> <%= user.username %><br>
+    <strong>Email:</strong> <%= user.email %><br>
+  </p>
+  <hr>
+<% }) %>
