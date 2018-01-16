@@ -1,0 +1,8 @@
+<% lists.forEach((list) => { %>
+  <div class="large-4 columns">
+    <a href="/lists/<%= list.id %>">
+      <h2><%= list.title %></h2>
+    </a>
+    <h3>Created by: <%= list.createdBy.username %></h3>
+  </div>
+<% }) %>

@@ -1,0 +1,43 @@
+<div class="large-12 columns">
+  <h2><%= list.title %></h2>
+  <h3>Created by: <%= list.createdBy.username %></h3>
+
+
+  <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+    <a href="/lists/<%= list.id %>/edit">Edit</a>
+    <form method="POST" action="/lists/<%= list.id %>">
+      <input type="hidden" name="_method" value="DELETE">
+      <button>Delete List</button>
+    </form>
+  <% } %>
+
+  <% list.items.forEach((item) => { %>
+    <img src=<%= item.image %>>
+    <h3><%= item.name %></h3>
+    <h4><%= item.teamname %></h4>
+    <p><%= item.description %></p>
+    <p><%= item.experience %></p>
+
+    <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
+      <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
+        <input type="hidden" name="_method" value="DELETE">
+        <button>Delete</button>
+      </form>
+    <% } %>
+  <% }) %>
+
+  <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+    <section>
+      <h4>List an item</h4>
+      <form method="POST" action="/lists/<%= list.id %>/items">
+        <textarea name="name" id="name" placeholder="Name"></textarea>
+        <textarea name="teamname" id="teamname" placeholder="Teamname"></textarea>
+        <textarea name="description" id="description" placeholder="Description"></textarea>
+        <textarea name="experience" id="experience" placeholder="Your ground experience"></textarea>
+        <textarea name="image" id="image" placeholder="Image(URL)"></textarea>
+        <button class="button">Add a list item</button>
+      </form>
+    </section>
+  <% } %>
+
+</div>
