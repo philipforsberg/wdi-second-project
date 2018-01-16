@@ -8,7 +8,18 @@
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body>
-    <% include ./partials/_navbar %>
+    <header>
+
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">GROUNDHOPPERS</h1>
+        </div>
+      </div>
+
+        <% include ./partials/_navbar %>
+
+    </header>
+
 
     <main>
       <% for (const type in messages) { %>
