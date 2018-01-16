@@ -1,4 +1,4 @@
-const List           = require('../models/list');
+const List = require('../models/list');
 
 function indexRoute(req, res, next) {
   List
@@ -99,7 +99,7 @@ function deleteItemRoute(req, res, next) {
 
 
 
-module.exports       = {
+module.exports = {
   index: indexRoute,
   new: newRoute,
   create: createRoute,
