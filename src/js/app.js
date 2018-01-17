@@ -4,6 +4,7 @@ $(() => {
 
   const $map    = $('.map');
   let map       = null;
+  // let locations = null;
 
   initMap();
 
@@ -13,6 +14,15 @@ $(() => {
     map = new google.maps.Map($map.get(0), {
       center: latLng,
       zoom: 14
+    });
+  }
+
+
+  function addMarker(location) {
+    const latLng = { lat: location.lat, lng: location.lon };
+    const marker = new google.maps.Marker({
+      position: latLng,
+      map: map
     });
   }
 

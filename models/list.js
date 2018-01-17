@@ -18,7 +18,7 @@ const groundSchema = new mongoose.Schema({
   latitude: Number,
   description: { type: String, required: true },
   experience: { type: String, required: true },
-  image: { type: String, required: true},
+  image: String,
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
 });
 
