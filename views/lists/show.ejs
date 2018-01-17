@@ -17,8 +17,8 @@
   <% list.items.forEach((item) => { %>
     <img src=<%= item.image %>>
     <h3><%= item.name %></h3>
-    <h5><%= item.longitude %></h5>
-    <h5><%= item.latitude %></h5>
+    <h5 class="lat"><%= item.latitude %></h5>
+    <h5 class="lng"><%= item.longitude %></h5>
     <h4><%= item.teamname %></h4>
     <p><%= item.description %></p>
     <p><%= item.experience %></p>

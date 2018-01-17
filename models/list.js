@@ -14,8 +14,8 @@ commentSchema.methods.belongsTo = function commentBelongsTo(user) {
 const groundSchema = new mongoose.Schema({
   name: { type: String, required: true },
   teamname: { type: String, required: true },
-  longitude: Number,
   latitude: Number,
+  longitude: Number,
   description: { type: String, required: true },
   experience: { type: String, required: true },
   image: String,
