@@ -18,8 +18,6 @@ const groundSchema = new mongoose.Schema({
   experience: { type: String, required: true },
   image: { type: String, required: true},
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true }
-}, {
-  timestamps: true
 });
 
 groundSchema.methods.belongsTo = function itemsBelongTo(user) {
@@ -32,8 +30,6 @@ const listSchema = new mongoose.Schema({
   createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true},
   items: [groundSchema],
   comments: [ commentSchema ]
-}, {
-  timestamps: true
 });
 
 listSchema.methods.belongsTo = function itemsBelongTo(user) {
