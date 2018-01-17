@@ -3,6 +3,7 @@ const List = require('../models/list');
 function indexRoute(req, res, next) {
   List
     .find()
+    .populate('createdBy')
     .exec()
     .then((lists) => res.render('lists/index', {lists}))
     .catch(next);

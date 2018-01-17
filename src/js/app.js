@@ -3,8 +3,8 @@
 $(() => {
 
   const $map    = $('.map');
+  const itemsData = JSON.parse($('#itemData').html());
   let map       = null;
-  // let locations = null;
 
   initMap();
 
@@ -15,25 +15,23 @@ $(() => {
       center: latLng,
       zoom: 6
     });
+
+    loopOverItems();
   }
 
-  function getGrounds() {
-    const latitude = parseFloat($('.lat').text());
-    const longitude = parseFloat($('.lng').text());
+  function loopOverItems() {
+    itemsData.forEach(item => {
+      const location = {
+        lat: item.latitude,
+        lng: item.longitude
+      };
 
-    console.log(latitude);
-    console.log(longitude);
-    addMarker({
-      lat: latitude,
-      lng: longitude
+      addMarker(location);
     });
   }
 
-  getGrounds();
-
   function addMarker(location) {
-    // const latLng = { lat: location.lat, lng: location };
-    const marker = new google.maps.Marker({
+    new google.maps.Marker({
       position: location,
       map: map
     });
