@@ -26,6 +26,12 @@ router.route('/lists/:id/items')
 router.route('/lists/:id/items/:itemId')
   .delete(lists.deleteItem);
 
+router.route('/lists/:id/comments')
+  .post(lists.createComment);
+
+router.route('/lists/:id/comments/:commentId')
+  .delete(lists.deleteComment);
+
 router.route('/register')
   .get(registrations.new)
   .post(registrations.create);

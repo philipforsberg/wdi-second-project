@@ -26,6 +26,30 @@
     <% } %>
   <% }) %>
 
+  <h4>Comments</h4>
+
+  <% list.comments.forEach((comment) => { %>
+      <p><%= comment.content %></p>
+      <small><%= comment.createdBy.username %></small>
+
+      <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+        <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete</button>
+        </form>
+      <% } %>
+    <% }) %>
+
+  <% if(locals.isLoggedIn) { %>
+  <section>
+    <h4>Leave a comment</h4>
+    <form method="POST" action="/lists/<%= list.id %>/comments">
+      <textarea name="content" id="content" placeholder="Comment"></textarea>
+      <button class="button">Leave a comment</button>
+    </form>
+  </section>
+  <% } %>
+
   <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
     <section>
       <h4>List an item</h4>

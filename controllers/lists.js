@@ -97,6 +97,41 @@ function deleteItemRoute(req, res, next) {
     .catch(next);
 }
 
+function createCommentRoute(req, res, next) {
+  req.body.createdBy = req.user;
+
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.notFound();
+
+      list.comments.push(req.body);
+      return list.save();
+    })
+    .then((list) => {
+      res.redirect(`/lists/${list.id}`);
+    })
+    .catch(next);
+}
+
+function deleteCommentRoute(req, res, next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if(!list) return res.notFound();
+
+      const comment = list.comments.id(req.params.commentId);
+      comment.remove();
+
+      return list.save();
+    })
+    .then((list) => {
+      res.redirect(`/lists/${list.id}`);
+    })
+    .catch(next);
+}
 
 
 module.exports = {
@@ -107,5 +142,7 @@ module.exports = {
   edit: editRoute,
   delete: deleteRoute,
   createItem: createItemRoute,
-  deleteItem: deleteItemRoute
+  deleteItem: deleteItemRoute,
+  createComment: createCommentRoute,
+  deleteComment: deleteCommentRoute
 };
