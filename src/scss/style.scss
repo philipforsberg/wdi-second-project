@@ -19,9 +19,12 @@ main {
   min-height: 65vh;
 }
 
+p {
+  font-size: 20px;
+}
 .homepage {
   text-align: center;
-  h1 {
+  h2 {
     font-size: 60px;
     text-align: center;
     margin: 15px 0 15px 0;
@@ -40,10 +43,14 @@ main {
   background: linear-gradient(to bottom, #3CD3AD, #4CB8C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin-bottom: 0;
   color: white;
+  h1 {
+    margin-bottom: -20px;
+  }
 }
 
 nav {
-  background-color: red;
+  background-color: #ff1a00;
+  margin-bottom: 25px;
   a {
     color: white;
   }
@@ -68,9 +75,26 @@ nav {
     }
 }
 
-.footer {
+.show-list {
+  margin: 15px auto;
+}
+
+.register-login {
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+footer {
   height: 40px;
+  width: 100%;
   float: right;
-  padding-right: 15px;
-  margin-top: 15px;
+  padding: 0 20px 15px 20px;
+  margin-top: 35px;
+  background: #FFFFFF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #ECE9E6, #FFFFFF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #ECE9E6, #FFFFFF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
 }

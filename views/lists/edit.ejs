@@ -1,10 +1,12 @@
 <h2>Edit your list</h2>
 
-<form method="POST" action="/lists/<%= list.id %>">
-  <input type="hidden" name="_method" value="PUT" required>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" name="title" id="title" required>
-  </div>
-  <button class="button btn btn-primary">Update List</button>
-</form>
+<div class="register-login">
+    <form method="POST" action="/lists/<%= list.id %>">
+      <input type="hidden" name="_method" value="PUT" required>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" name="title" id="title" required>
+      </div>
+      <button class="button btn btn-primary">Update List</button>
+    </form>
+</div>
