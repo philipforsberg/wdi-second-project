@@ -1,14 +1,13 @@
 // import scss partials here
 
 * {
-  border: 1px solid blue;
+  // border: 1px solid blue;
   box-sizing: border-box;
 }
 
 body {
   font-family: 'BioRhyme', serif;
-  // justify-content: center;
-  // align-items: center;
+  text-align: center;
 }
 
 main {
@@ -16,32 +15,38 @@ main {
   margin: 0 auto;
 }
 
-.wrapper {
-    min-height: 100%;
-    height: auto !important;
-    height: 100%;
-    margin: 0 auto -40px; /* the bottom margin is the negative value of the footer's height */
+.view-height {
+  min-height: 65vh;
 }
 
-.footer, .push {
-    height: 40px; /* .push must be the same height as .footer */
-}
-
-h1 {
-  font-size: 50px;
+.homepage {
   text-align: center;
+  h1 {
+    font-size: 60px;
+    text-align: center;
+    margin: 15px 0 15px 0;
+  }
 }
 
+.add-list {
+  text-align: center;
+  margin: 25px auto 0 auto;
+  width: 400px;
+}
 
 .jumbotron {
   background: #4CB8C4;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #3CD3AD, #4CB8C4);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #3CD3AD, #4CB8C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin-bottom: 0;
+  color: white;
 }
 
 nav {
   background-color: red;
+  a {
+    color: white;
+  }
 }
 
 .seats {
@@ -63,12 +68,9 @@ nav {
     }
 }
 
-footer {
-  position: inherit;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 2px;
-  background-color: #efefef;
-  text-align: center;
+.footer {
+  height: 40px;
+  float: right;
+  padding-right: 15px;
+  margin-top: 15px;
 }
