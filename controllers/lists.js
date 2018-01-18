@@ -50,6 +50,26 @@ function editRoute(req, res, next) {
     .catch(next);
 }
 
+function updateRoute(req, res, next) {
+  List
+    .findById(req.params.id)
+    .exec()
+    .then((list) => {
+      if (!list) return res.notFound();
+
+      list = Object.assign(list, req.body);
+
+      return list.save();
+    })
+    .then(() => res.redirect(`/lists/${req.params.id}`))
+    .catch((err) => {
+      if(err.name === 'ValidationError') {
+        return res.badRequest(`/lists/${req.params.id}/edit`, err.toString());
+      }
+      next(err);
+    });
+}
+
 function deleteRoute(req, res, next) {
   List
     .findById(req.params.id)
@@ -140,6 +160,7 @@ module.exports = {
   new: newRoute,
   create: createRoute,
   show: showRoute,
+  update: updateRoute,
   edit: editRoute,
   delete: deleteRoute,
   createItem: createItemRoute,

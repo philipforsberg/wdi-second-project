@@ -2,18 +2,26 @@
 
   <textarea id="itemData" style="display:none;"><%- JSON.stringify(list.items) %></textarea>
 
-  <h2><%= list.title %></h2>
-  <h3>Created by: <%= list.createdBy.username %></h3>
+  <div class="conainer">
 
-  <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-    <a href="/lists/<%= list.id %>/edit">Edit</a>
-    <form method="POST" action="/lists/<%= list.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button>Delete List</button>
-    </form>
-  <% } %>
+    <div class="columns large-6">
+      <h2><%= list.title %></h2>
+      <h3>Created by: <%= list.createdBy.username %></h3>
 
-  <div class="map">
+      <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+        <a href="/lists/<%= list.id %>/edit">Edit</a>
+        <form method="POST" action="/lists/<%= list.id %>">
+          <input type="hidden" name="_method" value="DELETE">
+          <button>Delete List</button>
+        </form>
+      <% } %>
+    </div>
+
+    <div class="columns large-6">
+      <div class="map">
+      </div>
+    </div>
+
   </div>
 
   <% list.items.forEach((item) => { %>

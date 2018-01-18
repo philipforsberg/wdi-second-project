@@ -15,6 +15,7 @@ router.route('/lists/new')
 
 router.route('/lists/:id')
   .get(lists.show)
+  .put(lists.update)
   .delete(secureRoute, lists.delete);
 
 router.route('/lists/:id/edit')
