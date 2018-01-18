@@ -1,34 +1,32 @@
-<div class="large-12 columns">
+<div class="columns">
 
   <textarea id="itemData" style="display:none;"><%- JSON.stringify(list.items) %></textarea>
 
   <div class="conainer">
+    <div class="row listheadline">
+      <div class="columns col-6">
+        <h2><%= list.title %></h2>
+        <h3>Created by: <%= list.createdBy.username %></h3>
 
-    <div class="columns large-6">
-      <h2><%= list.title %></h2>
-      <h3>Created by: <%= list.createdBy.username %></h3>
+        <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+          <a href="/lists/<%= list.id %>/edit">Edit</a>
+          <form method="POST" action="/lists/<%= list.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button>Delete List</button>
+          </form>
+        <% } %>
+      </div>
 
-      <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-        <a href="/lists/<%= list.id %>/edit">Edit</a>
-        <form method="POST" action="/lists/<%= list.id %>">
-          <input type="hidden" name="_method" value="DELETE">
-          <button>Delete List</button>
-        </form>
-      <% } %>
-    </div>
-
-    <div class="columns large-6">
-      <div class="map">
+      <div class="columns col-6">
+        <div class="map">
+        </div>
       </div>
     </div>
-
   </div>
 
   <% list.items.forEach((item) => { %>
     <img src=<%= item.image %>>
     <h3><%= item.name %></h3>
-    <h5><%= item.latitude %></h5>
-    <h5><%= item.longitude %></h5>
     <h4><%= item.teamname %></h4>
     <p><%= item.description %></p>
     <p><%= item.experience %></p>
@@ -70,8 +68,8 @@
       <h4>List an item</h4>
       <form method="POST" action="/lists/<%= list.id %>/items">
         <textarea name="name" id="name" placeholder="Name"></textarea>
-        <textarea name="longitude" id="longitude" placeholder="Longitude"></textarea>
-        <textarea name="latitude" id="latitude" placeholder="Latitude"></textarea>
+        <input type="hidden" name="longitude" id="longitude" placeholder="Longitude"></textarea>
+        <input type="hidden" name="latitude" id="latitude" placeholder="Latitude"></textarea>
         <textarea name="teamname" id="teamname" placeholder="Teamname"></textarea>
         <textarea name="description" id="description" placeholder="Description"></textarea>
         <textarea name="experience" id="experience" placeholder="Your ground experience"></textarea>

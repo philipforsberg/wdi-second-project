@@ -1,11 +1,13 @@
 // import scss partials here
-* {
-  border: 1px solid blue;
-}
+
+// * {
+//   border: 1px solid blue;
+// }
 
 body {
   font-family: 'Helvetica', sans-serif;
   justify-content: center;
+  align-items: center;
 }
 
 .jumbotron {
@@ -24,5 +26,9 @@ nav {
 .map {
   background: grey;
   height: 70vh;
-  width: 50%;
+  width: 100%;
+}
+
+.listheadline {
+  margin: 15px;
 }
