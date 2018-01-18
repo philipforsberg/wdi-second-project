@@ -4,7 +4,7 @@
 
   <div class="conainer">
     <div class="row listheadline">
-      <div class="columns col-6">
+      <div class="col-6">
         <h2><%= list.title %></h2>
         <h3>Created by: <%= list.createdBy.username %></h3>
 
@@ -17,7 +17,7 @@
         <% } %>
       </div>
 
-      <div class="columns col-6">
+      <div class="col-6">
         <div class="map">
         </div>
       </div>
@@ -67,7 +67,7 @@
     <section>
       <h4>List an item</h4>
       <form method="POST" action="/lists/<%= list.id %>/items">
-        <textarea name="name" id="name" placeholder="Name"></textarea>
+        <input type="text" name="name" id="name" placeholder="Name"></textarea>
         <input type="hidden" name="longitude" id="longitude" placeholder="Longitude"></textarea>
         <input type="hidden" name="latitude" id="latitude" placeholder="Latitude"></textarea>
         <textarea name="teamname" id="teamname" placeholder="Teamname"></textarea>
