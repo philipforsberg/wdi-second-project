@@ -16,6 +16,7 @@ main {
 }
 h1 {
   font-size: 50px;
+  text-align: center;
 }
 
 
@@ -23,6 +24,7 @@ h1 {
   background: #4CB8C4;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #3CD3AD, #4CB8C4);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #3CD3AD, #4CB8C4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin-bottom: 0;
 }
 
 nav {

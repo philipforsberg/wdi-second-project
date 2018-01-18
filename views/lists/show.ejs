@@ -12,7 +12,7 @@
           <a href="/lists/<%= list.id %>/edit">Edit</a>
           <form method="POST" action="/lists/<%= list.id %>">
             <input type="hidden" name="_method" value="DELETE">
-            <button>Delete List</button>
+            <button class="btn btn-primary">Delete List</button>
           </form>
         <% } %>
       </div>
@@ -34,7 +34,7 @@
     <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
       <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
         <input type="hidden" name="_method" value="DELETE">
-        <button>Delete</button>
+        <button class="btn btn-primary">Delete Post</button>
       </form>
     <% } %>
   <% }) %>
@@ -48,7 +48,7 @@
       <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
         <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
           <input type="hidden" name="_method" value="DELETE">
-          <button>Delete</button>
+          <button class="btn btn-primary">Delete Comment</button>
         </form>
       <% } %>
     <% }) %>
@@ -57,8 +57,10 @@
   <section>
     <h4>Leave a comment</h4>
     <form method="POST" action="/lists/<%= list.id %>/comments">
-      <textarea name="content" id="content" placeholder="Comment"></textarea>
-      <button class="button">Leave a comment</button>
+      <div class="form-group">
+        <textarea class="form-control" name="content" id="content" placeholder="Comment"></textarea>
+      </div>
+      <button class="btn btn-primary">Leave a comment</button>
     </form>
   </section>
   <% } %>
@@ -69,16 +71,27 @@
       <form method="POST" action="/lists/<%= list.id %>/items">
         <div class="form-group">
           <label for="name">Ground name</label>
-          <input type="text" name="name" id="name" placeholder="Name"></textarea>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Name"></textarea>
           <input type="hidden" name="longitude" id="longitude" placeholder="Longitude"></textarea>
           <input type="hidden" name="latitude" id="latitude" placeholder="Latitude"></textarea>
         </div>
         <div class="form-group">
-        <textarea name="teamname" id="teamname" placeholder="Teamname"></textarea>
-        <textarea name="description" id="description" placeholder="Description"></textarea>
-        <textarea name="experience" id="experience" placeholder="Your ground experience"></textarea>
-        <textarea name="image" id="image" placeholder="Image(URL)"></textarea>
-        <button class="button">Add a list item</button>
+          <label for="teamname">Teamname and city</label>
+          <input type="text" class="form-control" name="teamname" id="teamname" placeholder="Teamname, city"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="description">Facts about the ground</label>
+          <textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="experience">How was your experience that day</label>
+          <textarea class="form-control" rows="3" name="experience" id="experience" placeholder="Your ground experience"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="image">Add an URL link for an image</label>
+          <input type="text" class="form-control" name="image" id="image" placeholder="Image(URL)"></textarea>
+        </div>
+        <button class="btn btn-primary">Add a list item</button>
       </form>
     </section>
   <% } %>

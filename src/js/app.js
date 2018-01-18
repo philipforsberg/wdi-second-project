@@ -21,20 +21,37 @@ $(() => {
 
   function loopOverItems() {
     itemsData.forEach(item => {
-      const location = {
-        lat: item.latitude,
-        lng: item.longitude
-      };
 
-      addMarker(location);
+      addMarker(item);
     });
   }
 
-  function addMarker(location) {
-    new google.maps.Marker({
+  function addMarker(item) {
+    const location = {
+      lat: item.latitude,
+      lng: item.longitude
+    };
+
+    const marker = new google.maps.Marker({
       position: location,
       map: map
     });
+
+    marker.addListener('click', () => {
+      createInfoWindow(marker, item);
+    });
+  }
+
+  function createInfoWindow(marker, item) {
+    const infowindow = new google.maps.InfoWindow({
+      content: `
+        <div class="infowindow">
+          <h3>${item.name}</h3>
+        </div>
+    `
+    });
+
+    infowindow.open(map, marker);
   }
 
 
@@ -42,7 +59,7 @@ $(() => {
 
   const $lat = $('#lat-lng').attr('data-lat');
   const $lng = $('#lat-lng').attr('data-lng');
-  const latLng = { lat: parseFloat($lat), lng: parseFloat($lng) };
+  // const latLng = { lat: parseFloat($lat), lng: parseFloat($lng) };
   const $placeName = $('#placeName');
   const $address = $('#address');
   const $newLat = $('#latitude');
