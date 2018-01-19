@@ -1,15 +1,14 @@
+<div class="container">
 
+  <textarea id="itemData" style="display:none;"><%- JSON.stringify(list.items) %></textarea>
 
-<textarea id="itemData" style="display:none;"><%- JSON.stringify(list.items) %></textarea>
-
-<div class="conainer">
-  <div class="row listheadline">
-    <div class="col-6">
+  <div class="row list-headline">
+    <div class="col-5">
       <h2><%= list.title %></h2>
       <h3>Created by: <%= list.createdBy.username %></h3>
 
       <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-        <a href="/lists/<%= list.id %>/edit">Edit</a>
+        <a href="/lists/<%= list.id %>/edit">Edit List</a>
         <form method="POST" action="/lists/<%= list.id %>">
           <input type="hidden" name="_method" value="DELETE">
           <button class="btn btn-primary">Delete List</button>
@@ -17,81 +16,100 @@
       <% } %>
     </div>
 
-    <div class="col-6">
+    <div class="col-7">
       <div class="map">
       </div>
     </div>
   </div>
-</div>
+  <hr>
+  <% list.items.forEach((item) => { %>
+    <div class="row">
+      <div class="col-8">
+        <img src=<%= item.image %>>
+      </div>
+      <div class="col-4">
+        <h3><%= item.name %></h3>
+        <h4><%= item.teamname %></h4>
+        <p><%= item.description %></p>
+      </div>
+      <div class="row"
+        <div class="col-12">
+          <p><%= item.experience %></p>
 
-<% list.items.forEach((item) => { %>
-  <img src=<%= item.image %>>
-  <h3><%= item.name %></h3>
-  <h4><%= item.teamname %></h4>
-  <p><%= item.description %></p>
-  <p><%= item.experience %></p>
-
-  <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
-    <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
-      <input type="hidden" name="_method" value="DELETE">
-      <button class="btn btn-primary">Delete Post</button>
-    </form>
-  <% } %>
-<% }) %>
-
-<h4>Comments</h4>
-
-<% list.comments.forEach((comment) => { %>
-    <p><%= comment.content %></p>
-    <small><%= comment.createdBy.username %></small>
-
-    <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
-      <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
-        <input type="hidden" name="_method" value="DELETE">
-        <button class="btn btn-primary">Delete Comment</button>
-      </form>
-    <% } %>
+          <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
+            <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
+              <input type="hidden" name="_method" value="DELETE">
+              <button class="btn btn-primary">Delete Post</button>
+            </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <hr>
   <% }) %>
 
-<% if(locals.isLoggedIn) { %>
-<section>
-  <h4>Leave a comment</h4>
-  <form method="POST" action="/lists/<%= list.id %>/comments">
-    <div class="form-group">
-      <textarea class="form-control" name="content" id="content" placeholder="Comment"></textarea>
-    </div>
-    <button class="btn btn-primary">Leave a comment</button>
-  </form>
-</section>
-<% } %>
+  <h4>Comments</h4>
+  <div class="row">
+    <div class="col-8">
+      <% list.comments.forEach((comment) => { %>
+        <p><%= comment.content %> <small>(by <%= comment.createdBy.username %>)</small></p>
 
-<% if(locals.isLoggedIn && list.belongsTo(user)) { %>
-  <section>
-    <h4>List an item</h4>
-    <form method="POST" action="/lists/<%= list.id %>/items">
-      <div class="form-group">
-        <label for="name">Ground name</label>
-        <input type="text" class="form-control" name="name" id="name" placeholder="Name"></textarea>
-        <input type="hidden" name="longitude" id="longitude" placeholder="Longitude"></textarea>
-        <input type="hidden" name="latitude" id="latitude" placeholder="Latitude"></textarea>
+        <% if(locals.isLoggedIn && comment.belongsTo(user)) { %>
+          <form method="POST" action="/lists/<%= list.id %>/comments/<%= comment.id %>">
+            <input type="hidden" name="_method" value="DELETE">
+            <button class="btn btn-primary">Delete Comment</button>
+          </form>
+        <% } %>
+      <% }) %>
+    </div>
+    <div class="col-4">
+      <% if(locals.isLoggedIn) { %>
+      <section>
+        <h4>Leave a comment</h4>
+        <form method="POST" action="/lists/<%= list.id %>/comments">
+          <div class="form-group">
+            <textarea class="form-control" name="content" id="content" placeholder="Comment"></textarea>
+          </div>
+          <button class="btn btn-primary">Leave a comment</button>
+        </form>
+      </section>
+      <% } %>
+    </div>
+  </div>
+  <hr>
+
+    <% if(locals.isLoggedIn && list.belongsTo(user)) { %>
+      <div class="list-new-item">
+        <h4>List an item</h4>
+        <form method="POST" action="/lists/<%= list.id %>/items">
+          <div class="row">
+            <div class="form-group col-6">
+              <label for="name">Ground name</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Name"></textarea>
+              <input type="hidden" name="longitude" id="longitude" placeholder="Longitude"></textarea>
+              <input type="hidden" name="latitude" id="latitude" placeholder="Latitude"></textarea>
+            </div>
+            <div class="form-group col-6">
+              <label for="teamname">Teamname and city</label>
+              <input type="text" class="form-control" name="teamname" id="teamname" placeholder="Teamname, city"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Facts about the ground</label>
+            <textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="experience">How was your experience that day</label>
+            <textarea class="form-control" rows="3" name="experience" id="experience" placeholder="Your ground experience"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="image">Add an URL link for an image</label>
+            <input type="text" class="form-control" name="image" id="image" placeholder="Image(URL)"></textarea>
+          </div>
+          <button class="btn btn-primary">Add a list item</button>
+        </form>
       </div>
-      <div class="form-group">
-        <label for="teamname">Teamname and city</label>
-        <input type="text" class="form-control" name="teamname" id="teamname" placeholder="Teamname, city"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="description">Facts about the ground</label>
-        <textarea class="form-control" rows="3" name="description" id="description" placeholder="Description"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="experience">How was your experience that day</label>
-        <textarea class="form-control" rows="3" name="experience" id="experience" placeholder="Your ground experience"></textarea>
-      </div>
-      <div class="form-group">
-        <label for="image">Add an URL link for an image</label>
-        <input type="text" class="form-control" name="image" id="image" placeholder="Image(URL)"></textarea>
-      </div>
-      <button class="btn btn-primary">Add a list item</button>
-    </form>
-  </section>
-<% } %>
+    <% } %>
+
+</div>
