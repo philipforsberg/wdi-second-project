@@ -25,7 +25,7 @@
   <% list.items.forEach((item) => { %>
     <div class="row">
       <div class="col-8">
-        <img src=<%= item.image %>>
+        <img class="img-thumbnail" src=<%= item.image %>>
       </div>
       <div class="col-4">
         <h3><%= item.name %></h3>
@@ -39,7 +39,7 @@
           <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
               <input type="hidden" name="_method" value="DELETE">
-              <button class="btn btn-primary">Delete Post</button>
+              <button class="btn btn-primary delete-post">Delete Post</button>
             </form>
           <% } %>
         </div>
