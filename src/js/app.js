@@ -59,7 +59,7 @@ $(() => {
 
   const $lat = $('#lat-lng').attr('data-lat');
   const $lng = $('#lat-lng').attr('data-lng');
-  // const latLng = { lat: parseFloat($lat), lng: parseFloat($lng) };
+  const latLng = { lat: parseFloat($lat), lng: parseFloat($lng) };
   const $placeName = $('#placeName');
   const $address = $('#address');
   const $newLat = $('#latitude');
