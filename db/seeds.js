@@ -52,12 +52,12 @@ User
         title: 'My visits to PL grounds',
         items: [{
           name: 'St. James Park',
-          latitude: 51.50246,
-          longitude: -0.134811,
+          latitude: 54.971996112,
+          longitude: -1.619664188,
           teamname: 'Newcastle United FC, Newcastle upon Tyne',
           description: 'Opened in 1891, with a complete renovation in 2001, making the capacity of the stadium 52 387 people. Sold the rights to the name in 2011, and was renamed Sports Direct Arena, to the fans horror. Sold on to Wonga in 2012, who demanded the old name to be reinstated.',
           experience: 'Newcastle - Wigan, 2-1, 16/18 season. The stadium was packed this day, like almost every home match for Newcastle. The atmosphere of 50 000 northeners was great, people shouting toon, toon, blakc-white-army all over the place. The ground itself is nice, even though they have tried to put an ad for Sports Direct anywhere physically possible. Game was alright, and had a decent game-day burger between the halves. Glad to have put this one on the list!',
-          image: 'http://www.stadiumguide.com/wp-content/uploads/stjamespark_top.jpg',
+          image: 'http://www.chelseafc.com/content/cfc/en/homepage/matches/away-travel-guides/shared/newcastle---st-james--park.img.png',
           createdBy: users[1]},
         {
           name: 'Stamford Bridge',
