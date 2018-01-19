@@ -23,7 +23,7 @@ For this app I've used the following technologies and dependicies:
 - 	Jquery
 -  SCCS
 -  Github
--  bals
+-  mybalsamic.com
 -  gulp
 -  bcrypt
 -  bluebird
@@ -42,7 +42,7 @@ I met several bumps on the road during this project, but I think the biggest one
 
 
 ### Ideas and plans for new features
-Like any project I've done, I never feel that I'm completely done with this project, but the deadline came sooner than hoped. If I had more time, I would do a several bigger and minor changes to the CSS of the page, even the general layout of the page.
+Like any project I've done, I never feel that I'm completely done with this project, but the deadline came sooner than hoped. If I had more time, I would do a several bigger and minor changes to the CSS of the page, even the general layout of the page. 
 Other things that would be high up on the list of things to do is to make user-pages, showing all the lists and grounds a user has visited/written about. And also make it possible to click on a particular grounds name, and see all the posts by all users on that ground. 
 
 ### Acknowledgments

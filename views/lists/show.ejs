@@ -36,8 +36,8 @@
       </div>
       <div class="row">
         <div class="col-12">
+          <h3>My experience</h3>
           <p><%= item.experience %></p>
-
           <% if(locals.isLoggedIn && item.belongsTo(user)) { %>
             <form method="POST" action="/lists/<%= list.id %>/items/<%= item.id %>">
               <input type="hidden" name="_method" value="DELETE">
