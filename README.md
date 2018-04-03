@@ -22,19 +22,18 @@ This app is online, and here's the link for [it](https://tranquil-spire-86084.he
 ### Technologies and dependencies
 For this app I've used the following technologies and dependencies:
 
--	Javascript
-- 	Jquery
+-	JavaScript
+- jQuery
 -  SCCS
--  Github
--  mybalsamic.com
--  gulp
--  bcrypt
--  bluebird
--  ejs
--  express, express-ejs-layouts, express-flash, express-session
--  method-override
--  mongoose
--  morgan
+-  GitHub
+-  Gulp
+-  Bcrypt
+-  Bluebird
+-  EJS
+-  Express
+-  Method Override
+-  Mongoose
+-  Morgan
 
 
 ### What I liked about this project
